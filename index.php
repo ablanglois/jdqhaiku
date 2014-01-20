@@ -8,27 +8,37 @@ $data = new SQLiteDatabase('data/data.sqlite');
 $page = $data->query('SELECT * FROM haikus ORDER BY date DESC LIMIT '.$pageSize.' OFFSET '.$pageNum*$pageSize)->fetchAll();
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]> <html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]> <html class="lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
 
-  <title>Jidéku.</title>
+  <title>JI|DE|KU</title>
   <link rel="stylesheet" href="public/styles.css">
 </head>
 <body>
+  <header>
+    <h1><a href="index.php">
+      JI•••<br>
+      DE•••••<br>
+      KU•••
+    </a></h1>
+    <nav>
+      <a href="quoi.html">De kessé?</a>
+      <a class="icon" href="https://twitter.com/jdqhaiku" title='Suivez JI|DE|KU sur Twitter'></a>
+      <a class="icon" href="feed.php" title='Abonnez-vous au fil de nouvelles'></a>
+    </nav>
+  </header>
 <?php foreach ($page as $haiku) : ?>
   <article>
-    <blockquote><?= $haiku['text'] ?></blockquote>
-    <p>// dans <a href="<?= $haiku['uri'] ?>"><?= $haiku['title'] ?></a></p>
+    <blockquote><p><?= $haiku['text'] ?></p></blockquote>
+    <h1>— Tiré de <a href="<?= $haiku['uri'] ?>"><?= $haiku['title'] ?></a></h1>
   </article>
 <?php endforeach; ?>
 
   <footer>
-    <p><a href="https://twitter.com/jdqhaiku">Twitter</a></p>
-    <p><small>Extraits des textes © <a href="http://www.journaldequebec.com/">Le Journal de Québec</a> et leurs auteurs respectifs.</small></p>
+    <p><small>
+      Extraits des textes © <a href="http://www.journaldequebec.com/">Le Journal de Québec</a> et leurs auteurs respectifs.<br>
+      JI|DE|KU n’est d’aucune manière affilié au Journal de Québec, à Québécor Média ou à toute autre de ses propriétés intellectuelles.</small></p>
   </footer>
 </body>
 </html>

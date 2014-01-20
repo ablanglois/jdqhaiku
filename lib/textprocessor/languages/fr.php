@@ -14,7 +14,7 @@ return array(
                 (?<!ll|[ié])e(?!\b) | (?<!i)[éèê] | (?<!u)ë | (?<=\b[a-df-hj-np-tv-xz])e | (?<=qu)e |
                 (?<![aeoœy])i | ï |
                 (?<!ti|o)o | ô | œ |
-                (?<![aeioœgq])u | (?<=g)u(?=ë) |
+                (?<![aeioœgq])u | (?<=g)u(?=ë) | û |
                 (?<![aiueéèo])y(?![aiueéèo])
               /ixu',
   'noLineEnd' => array(

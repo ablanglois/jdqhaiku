@@ -12,7 +12,7 @@ class Jideku {
   public function __construct() {
     $this->data = new SQLiteDatabase('data/data.sqlite');
     $this->feedParser = new SimplePie();
-    $this->haikuFinder = new Serendipitous();
+    $this->haikuFinder = new Serendipitous('fr');
   }
 
   public function setFeedURL($feedURL) {
@@ -28,7 +28,7 @@ class Jideku {
         $fullText = $this->getFullArticleContent($feed->get_permalink());
         if ( !preg_match('/x[0-9A-E]{2,4};/', $text) && $haiku = $this->haikuFinder->find($fullText) ):
           $this->data->query('INSERT INTO haikus (uri, title, text, date) VALUES ("'.$feed->get_permalink().'", "'.$feed->get_title().'", "'.$haiku.'", "'.date('c').'")');
-          # $this->tweet($haiku, $feed->get_permalink());
+          $this->tweet($haiku, $feed->get_permalink());
           echo "$haiku<hr>";
         endif;
       endif;

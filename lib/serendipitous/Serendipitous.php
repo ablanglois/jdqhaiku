@@ -2,8 +2,14 @@
 require_once('lib/textprocessor/TextProcessor.php');
 
 class Serendipitous {
+  private $lang;
+
+  public function __construct($lang) {
+    $this->lang = $lang;
+  }
+
   public function find($text) {
-    $textProcessor = new TextProcessor('fr');
+    $textProcessor = new TextProcessor($this->lang);
     $sentences = $textProcessor->sentences($text);
     foreach ($sentences as $sentence) :
       $sentenceSyllableCount = $textProcessor->syllableCount($sentence);

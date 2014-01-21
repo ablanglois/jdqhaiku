@@ -1,0 +1,3 @@
+[submodule "lib/serendipitous"]
+	path = lib/serendipitous
+	url = https://github.com/ablanglois/serendipitous
